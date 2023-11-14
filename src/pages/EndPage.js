@@ -8,7 +8,7 @@ import {CircularProgress} from "@material-ui/core";
 import {CancelButton} from "../components/CancelButton";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
-
+ 
 
 export default class EndPage extends React.Component{
     constructor() {
@@ -125,11 +125,13 @@ export default class EndPage extends React.Component{
                                 size="medium"
                                 className="alert-buttons"
                                 onClick={() => {
-                                    if (process.env.REACT_APP_LOGGING === 'true') {
-                                        jatos.endStudyAndRedirect(this.props.studyMetaTracker.surveyURL, true, "study completed successfully")//eslint-disable-line no-undef
-                                    } else {
-                                        jatos.endStudy(true, "study completed successfully");//eslint-disable-line no-undef
-                                    }
+                                    //jatos.endStudy(true, "study completed successfully");//eslint-disable-line no-undef
+                                    window.location.href = window.location.href.slice(0, window.location.href.indexOf("/task")) + "/redirect_next_page"
+                                    // if (process.env.REACT_APP_LOGGING === 'true') {
+                                    //     jatos.endStudyAndRedirect(this.props.studyMetaTracker.surveyURL, true, "study completed successfully")//eslint-disable-line no-undef
+                                    // } else {
+                                    //     jatos.endStudy(true, "study completed successfully");//eslint-disable-line no-undef
+                                    // }
                                 }}>
                                 {i18next.t('end.questionnaire.soci_survey')}
                             </Button>
